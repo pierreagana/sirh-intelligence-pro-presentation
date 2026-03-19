@@ -714,6 +714,50 @@
       margin-top: 18px;
     }
 
+    .config-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .config-box {
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .config-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff2cf;
+    }
+
+    .config-box.full {
+      grid-column: 1 / -1;
+    }
+
+    .config-box p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .config-snippet {
+      margin: 0;
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(6, 14, 24, 0.9);
+      border: 1px solid rgba(135, 228, 197, 0.14);
+      color: #c8fff3;
+      font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
     .flow-box {
       padding: 18px;
       border-radius: 18px;
@@ -787,6 +831,7 @@
       .hero-grid,
       .section-heading,
       .stack-grid,
+      .config-grid,
       .cta-card,
       .scenario-grid {
         grid-template-columns: 1fr;
@@ -893,9 +938,9 @@
           <p>
             Cette solution centralise les processus RH, les dossiers salari&eacute;s, les contrats,
             les validations, la conformit&eacute; sociale et les actes juridiques dans une plateforme
-            moderne, assist&eacute;e par intelligence artificielle et automatisation compl&egrave;te. Le travail
-            se fait d&apos;abord en mode offline sur l&apos;application desktop, puis les donn&eacute;es sont
-            synchronis&eacute;es en ligne d&egrave;s que la connexion revient.
+            moderne, assist&eacute;e par intelligence artificielle et automatisation compl&egrave;te. Pour un usage
+            multiutilisateur, les postes desktop travaillent sur un serveur local du site, puis les
+            donn&eacute;es sont synchronis&eacute;es vers la plateforme centrale d&egrave;s que la connexion revient.
           </p>
 
           <div class="hero-actions">
@@ -910,7 +955,7 @@
             </div>
             <div class="metric">
               <strong>Offline</strong>
-              <span>Sauvegarde locale imm&eacute;diate sur desktop, puis synchronisation automatique des donn&eacute;es &agrave; la reconnexion</span>
+              <span>Serveur local de site pour le multiutilisateur, puis synchronisation automatique vers la plateforme centrale</span>
             </div>
             <div class="metric">
               <strong>IA</strong>
@@ -944,8 +989,8 @@
                 <p>Biblioth&egrave;que d&apos;actes, suivi des obligations, rappels et contr&ocirc;le documentaire.</p>
               </div>
               <div class="mini-card">
-                <strong>Desktop offline-first</strong>
-                <p>Le travail continue sans Internet, avec stockage local s&eacute;curis&eacute; puis synchronisation en ligne.</p>
+                <strong>Desktop + serveur local</strong>
+                <p>Les &eacute;quipes continuent &agrave; travailler sur le r&eacute;seau local du site, puis le serveur synchronise vers le central.</p>
               </div>
               <div class="mini-card">
                 <strong>Copilote IA</strong>
@@ -1289,93 +1334,166 @@
         <div class="section-heading reveal">
           <div>
             <span>Desktop Offline/Online</span>
-            <h2>Le travail se fait d&apos;abord hors ligne, puis la plateforme synchronise en ligne.</h2>
+            <h2>L&apos;installateur permet de choisir un mode online, offline ou offline + online.</h2>
           </div>
           <p>
-            La solution est pens&eacute;e comme une application desktop m&eacute;tier. L&apos;utilisateur peut continuer
-            &agrave; cr&eacute;er, modifier et consulter ses dossiers m&ecirc;me sans connexion Internet. D&egrave;s que le r&eacute;seau
-            revient, les donn&eacute;es enregistr&eacute;es localement sont envoy&eacute;es vers la plateforme centrale.
+            Au moment de l&apos;installation, l&apos;utilisateur ou l&apos;administrateur peut choisir un d&eacute;ploiement
+            `online uniquement`, `offline uniquement` ou `offline + online`. En fonction de ce choix,
+            l&apos;assistant d&apos;installation active automatiquement les composants utiles: connexion directe au
+            serveur central, serveur local du site, base PostgreSQL locale, service de synchronisation
+            ou configuration mixte pour un usage multiutilisateur.
           </p>
         </div>
 
         <div class="stack-grid">
           <article class="stack-panel reveal">
-            <h3>Comment le travail se fait en offline</h3>
+            <h3>Architecture locale si mode offline ou hybride</h3>
             <div class="architecture-flow">
               <div class="flow-box">
-                <strong>1. Saisie locale</strong>
-                <span>Chaque op&eacute;ration RH ou juridique est saisie dans l&apos;application desktop et sauvegard&eacute;e d&apos;abord en local.</span>
+                <strong>1. Postes clients desktop</strong>
+                <span>Chaque RH, juriste ou manager utilise l&apos;application desktop install&eacute;e sur son PC.</span>
               </div>
               <div class="flow-arrow"></div>
               <div class="flow-box">
-                <strong>2. Base locale s&eacute;curis&eacute;e</strong>
-                <span>Les donn&eacute;es, pi&egrave;ces et brouillons sont conserv&eacute;s sur le poste dans une base locale s&eacute;curis&eacute;e.</span>
+                <strong>2. API locale du site</strong>
+                <span>Les postes envoient leurs actions au serveur local du bureau ou de l&apos;agence via le r&eacute;seau interne.</span>
               </div>
               <div class="flow-arrow"></div>
               <div class="flow-box">
-                <strong>3. File d&apos;attente de synchro</strong>
-                <span>Chaque cr&eacute;ation, modification ou document est plac&eacute; dans une file de synchronisation en attente.</span>
+                <strong>3. PostgreSQL local + documents</strong>
+                <span>Les donn&eacute;es, pi&egrave;ces et journaux sont stock&eacute;s sur le serveur local pour un usage partag&eacute; en multiutilisateur.</span>
               </div>
               <div class="flow-arrow"></div>
               <div class="flow-box">
-                <strong>4. Continuit&eacute; de service</strong>
-                <span>L&apos;utilisateur continue &agrave; travailler normalement, m&ecirc;me sans acc&egrave;s Internet.</span>
+                <strong>4. Service de synchronisation</strong>
+                <span>Le serveur local g&egrave;re la file d&apos;attente, les reprises, les accus&eacute;s et l&apos;envoi vers le central quand Internet revient.</span>
+              </div>
+              <div class="flow-arrow"></div>
+              <div class="flow-box">
+                <strong>5. Laravel central + PostgreSQL central</strong>
+                <span>Le serveur central consolide les donn&eacute;es, pilote les workflows globaux, les services IA et le reporting multi-sites.</span>
               </div>
             </div>
           </article>
 
           <article class="stack-panel reveal">
-            <h3>Ce qui se passe quand la connexion revient</h3>
+            <h3>Fonctionnement quotidien selon le mode</h3>
             <div class="architecture-flow">
               <div class="flow-box">
-                <strong>1. D&eacute;tection du r&eacute;seau</strong>
-                <span>L&apos;application d&eacute;tecte automatiquement le retour de la connexion ou lance une synchro manuelle.</span>
+                <strong>1. Mode online</strong>
+                <span>Les postes se connectent directement au serveur central pour utiliser les workflows, les donn&eacute;es et les services IA disponibles en ligne.</span>
               </div>
               <div class="flow-arrow"></div>
               <div class="flow-box">
-                <strong>2. Envoi vers Laravel</strong>
-                <span>Les donn&eacute;es en attente sont envoy&eacute;es vers l&apos;API centrale pour validation, journalisation et traitement.</span>
+                <strong>2. Mode offline ou hybride</strong>
+                <span>Les utilisateurs travaillent ensemble sur le serveur local du site; les cr&eacute;ations, validations et documents restent visibles dans le bureau.</span>
               </div>
               <div class="flow-arrow"></div>
               <div class="flow-box">
-                <strong>3. Stockage central PostgreSQL</strong>
-                <span>Les informations valid&eacute;es sont enregistr&eacute;es dans la base centrale et rendues disponibles aux autres postes.</span>
+                <strong>3. Retour d&apos;Internet en mode hybride</strong>
+                <span>Le service de synchronisation pousse les op&eacute;rations en attente vers Laravel central et r&eacute;cup&egrave;re les mises &agrave; jour distantes.</span>
               </div>
               <div class="flow-arrow"></div>
               <div class="flow-box">
-                <strong>4. Retour d&apos;&eacute;tat</strong>
-                <span>Le poste re&ccedil;oit l&apos;&eacute;tat de synchro, les accus&eacute;s de r&eacute;ception et les mises &agrave; jour utiles.</span>
+                <strong>4. Supervision et arbitrage</strong>
+                <span>L&apos;administration du site voit les statuts de synchro, les erreurs, les conflits &eacute;ventuels et peut relancer les envois.</span>
               </div>
             </div>
           </article>
         </div>
 
         <article class="stack-panel reveal" style="margin-top:18px;">
-          <h3>Principes cl&eacute;s du mode hybride</h3>
+          <h3>Configuration guid&eacute;e par mode et par niveau</h3>
+          <div class="config-grid">
+            <div class="config-box full">
+              <strong>Choix du mode pendant l&apos;installation</strong>
+              <p>
+                L&apos;installateur propose un &eacute;cran simple avec trois choix. Une fois le mode s&eacute;lectionn&eacute;,
+                la plateforme adapte automatiquement le param&eacute;trage, les services &agrave; installer et les
+                &eacute;crans affich&eacute;s &agrave; l&apos;utilisateur.
+              </p>
+              <pre class="config-snippet">MODE 1 - ONLINE
+Connexion directe des postes au serveur central
+Active: API centrale, authentification centrale, base centrale
+D&eacute;sactive: serveur local, PostgreSQL local, synchro de site
+
+MODE 2 - OFFLINE
+Travail local sur le site sans d&eacute;pendance au serveur central
+Active: serveur local, PostgreSQL local, stockage local
+D&eacute;sactive: synchronisation centrale automatique
+
+MODE 3 - OFFLINE + ONLINE
+Travail local multiutilisateur + synchronisation vers le central
+Active: serveur local, PostgreSQL local, synchro, supervision
+Active aussi: API centrale, reporting global, services IA centraux</pre>
+              <ul class="bullet-list">
+                <li><strong>Online</strong> Le poste ou le site pointe directement vers l&apos;URL centrale et l&apos;installateur masque les champs li&eacute;s au serveur local.</li>
+                <li><strong>Offline</strong> L&apos;installateur pr&eacute;pare un environnement local autonome, sans exiger une connexion vers le central.</li>
+                <li><strong>Offline + Online</strong> L&apos;installateur configure le serveur local, la base locale et la synchronisation avec la plateforme centrale.</li>
+              </ul>
+            </div>
+
+            <div class="config-box">
+              <strong>1. Serveur local du site</strong>
+              <p>
+                Si le mode `offline` ou `offline + online` est choisi, dans chaque bureau ou agence, une machine locale
+                joue le r&ocirc;le de serveur du r&eacute;seau. Elle h&eacute;berge l&apos;API locale, PostgreSQL local,
+                le stockage documentaire et, si besoin, le service de synchronisation.
+              </p>
+              <pre class="config-snippet">SITE_NAME=Si&egrave;ge Abidjan
+SITE_CODE=ABJ-HQ
+LOCAL_API_URL=http://192.168.1.10:8000
+LOCAL_DB_HOST=127.0.0.1
+LOCAL_DB_PORT=5432
+LOCAL_DB_NAME=sirh_site
+LOCAL_DB_USER=sirh_user
+SYNC_SERVER_URL=https://central.example.com
+SYNC_KEY=SYNC-ABJ-2026
+SYNC_INTERVAL=60</pre>
+            </div>
+
+            <div class="config-box">
+              <strong>2. Postes clients</strong>
+              <p>
+                Sur chaque PC, on installe seulement l&apos;application desktop. Selon le mode choisi, le poste
+                se connecte soit au serveur central, soit au serveur local du site, soit aux deux dans un
+                sc&eacute;nario hybride pilot&eacute; par l&apos;installateur.
+              </p>
+              <pre class="config-snippet">SITE_CODE=ABJ-HQ
+LOCAL_SERVER_URL=http://192.168.1.10:8000
+CENTRAL_SERVER_URL=https://central.example.com
+DEVICE_ID=PC-RH-01
+CLIENT_MODE=desktop
+DEPLOYMENT_MODE=hybrid
+AUTO_RETRY_SYNC=true
+DEFAULT_PRINTER=HP-LaserJet-RH</pre>
+            </div>
+          </div>
+
           <div class="stack-list">
             <div class="stack-item">
-              <strong>Offline-first</strong>
-              <span>La plateforme n&apos;attend pas Internet pour permettre la saisie et l&apos;ex&eacute;cution m&eacute;tier.</span>
+              <strong>Installateur serveur local</strong>
+              <span>Il n&apos;est lanc&eacute; que si le mode `offline` ou `offline + online` est retenu, puis pr&eacute;pare automatiquement les services requis.</span>
             </div>
             <div class="stack-item">
-              <strong>Sauvegarde locale d&apos;abord</strong>
-              <span>Chaque donn&eacute;e est enregistr&eacute;e en local avant tout envoi vers le serveur central.</span>
+              <strong>&Eacute;cran d&apos;administration du site</strong>
+              <span>Il permet de renseigner le nom du site, l&apos;IP locale, les param&egrave;tres PostgreSQL, l&apos;URL du serveur central et la cl&eacute; de synchronisation selon le mode retenu.</span>
             </div>
             <div class="stack-item">
-              <strong>Synchronisation automatique</strong>
-              <span>Les &eacute;l&eacute;ments en attente repartent seuls &agrave; la reconnexion, avec possibilit&eacute; de relancer manuellement.</span>
+              <strong>Installateur desktop</strong>
+              <span>Chaque poste client re&ccedil;oit l&apos;application desktop et l&apos;assistant lui demande s&apos;il doit fonctionner en online, offline ou hybride.</span>
             </div>
             <div class="stack-item">
-              <strong>Journal de synchro</strong>
-              <span>Chaque envoi, reprise, erreur ou succ&egrave;s est trac&eacute; pour garder la visibilit&eacute; op&eacute;rationnelle.</span>
+              <strong>&Eacute;cran de choix et de connexion</strong>
+              <span>Le client choisit son mode, puis saisit le code du site, l&apos;adresse du serveur local ou l&apos;URL centrale selon le sc&eacute;nario &agrave; d&eacute;ployer.</span>
             </div>
             <div class="stack-item">
-              <strong>Gestion des conflits</strong>
-              <span>Les doubles modifications ou versions contradictoires peuvent &ecirc;tre d&eacute;tect&eacute;es puis arbitr&eacute;es.</span>
+              <strong>Param&eacute;trage automatique</strong>
+              <span>En fonction du choix, l&apos;installateur active les bons services, masque les options inutiles et g&eacute;n&egrave;re la configuration adapt&eacute;e.</span>
             </div>
             <div class="stack-item">
-              <strong>IA connect&eacute;e intelligemment</strong>
-              <span>Les r&egrave;gles m&eacute;tier essentielles restent disponibles hors ligne; les traitements IA avanc&eacute;s se compl&egrave;tent &agrave; la reconnexion.</span>
+              <strong>Condition de continuit&eacute;</strong>
+              <span>En mode hybride, le travail multiutilisateur reste disponible tant que le r&eacute;seau local du site fonctionne, m&ecirc;me si Internet est indisponible.</span>
             </div>
           </div>
         </article>
@@ -1560,12 +1678,13 @@
         <div class="section-heading reveal">
           <div>
             <span>Architecture Technique</span>
-            <h2>Application desktop offline-first + Laravel 12 + PostgreSQL pour un socle robuste et &eacute;volutif.</h2>
+            <h2>Application desktop + serveur local optionnel + Laravel 12 + PostgreSQL pour un socle adaptable.</h2>
           </div>
           <p>
-            La r&eacute;alisation technique repose sur un client desktop m&eacute;tier avec base locale et moteur de
-            synchronisation, connect&eacute; &agrave; un backend Laravel 12 et une base PostgreSQL centrale. L&apos;ensemble
-            permet de travailler hors ligne, puis de consolider les donn&eacute;es en ligne d&egrave;s le retour du r&eacute;seau.
+            La r&eacute;alisation technique s&apos;adapte au mode choisi &agrave; l&apos;installation. En `online`, les postes
+            se connectent au backend central. En `offline`, le site travaille sur son serveur local. En
+            `offline + online`, le serveur local du site est reli&eacute; &agrave; Laravel 12 et &agrave; PostgreSQL central
+            pour assurer la synchronisation et le pilotage global.
           </p>
         </div>
 
@@ -1575,27 +1694,27 @@
             <div class="stack-list">
               <div class="stack-item">
                 <strong>Application desktop</strong>
-                <span>Interface m&eacute;tier locale pour les &eacute;quipes RH et juridiques, utilisable m&ecirc;me sans Internet.</span>
+                <span>Interface m&eacute;tier install&eacute;e sur chaque poste RH, juridique ou manager pour la saisie et la consultation des dossiers.</span>
               </div>
               <div class="stack-item">
-                <strong>Base locale offline</strong>
-                <span>Stockage local s&eacute;curis&eacute; des donn&eacute;es, pi&egrave;ces et brouillons avant synchronisation.</span>
+                <strong>Serveur local du site</strong>
+                <span>Composant optionnel activ&eacute; en mode `offline` ou `offline + online` pour servir plusieurs utilisateurs sur le r&eacute;seau local.</span>
               </div>
               <div class="stack-item">
-                <strong>Laravel 12 API</strong>
-                <span>Back-end central pour les workflows, l&apos;authentification, les r&egrave;gles m&eacute;tier et les services IA.</span>
+                <strong>PostgreSQL local du site</strong>
+                <span>Base partag&eacute;e activ&eacute;e pour les sc&eacute;narios locaux, avec stockage des donn&eacute;es, pi&egrave;ces et journaux du site.</span>
+              </div>
+              <div class="stack-item">
+                <strong>Laravel 12 API central</strong>
+                <span>Back-end central pour les workflows globaux, l&apos;authentification, les r&egrave;gles m&eacute;tier et les services IA en mode `online` ou `hybride`.</span>
               </div>
               <div class="stack-item">
                 <strong>PostgreSQL central</strong>
-                <span>Base relationnelle centrale fiable, audit&eacute;e et partag&eacute;e entre les postes connect&eacute;s.</span>
+                <span>Base relationnelle centrale fiable pour la consolidation, l&apos;audit, le reporting et la coordination multi-sites.</span>
               </div>
               <div class="stack-item">
-                <strong>Sync &amp; Automations</strong>
-                <span>File de synchronisation, reprise automatique, traitements diff&eacute;r&eacute;s et notifications.</span>
-              </div>
-              <div class="stack-item">
-                <strong>S&eacute;curit&eacute;</strong>
-                <span>Gestion fine des droits, journalisation, audit et protection des donn&eacute;es sensibles.</span>
+                <strong>Sync, s&eacute;curit&eacute; et supervision</strong>
+                <span>File de synchronisation, reprise automatique, journalisation, audit et protection des donn&eacute;es sensibles.</span>
               </div>
             </div>
           </article>
@@ -1604,23 +1723,28 @@
             <h3>Logique de plateforme</h3>
             <div class="architecture-flow">
               <div class="flow-box">
-                <strong>Application desktop</strong>
-                <span>Saisie m&eacute;tier locale, consultation des dossiers et travail continu sur le poste de l&apos;utilisateur.</span>
+                <strong>Postes desktop</strong>
+                <span>Les utilisateurs saisissent leurs op&eacute;rations RH et juridiques depuis l&apos;application install&eacute;e sur chaque PC.</span>
               </div>
               <div class="flow-arrow"></div>
               <div class="flow-box">
-                <strong>Base locale + file de synchro</strong>
-                <span>Enregistrement offline d&apos;abord, stockage temporaire des changements et pi&egrave;ces en attente d&apos;envoi.</span>
+                <strong>API locale du site</strong>
+                <span>Le serveur local re&ccedil;oit les requ&ecirc;tes des postes et applique les r&egrave;gles m&eacute;tier utiles au niveau du bureau.</span>
               </div>
               <div class="flow-arrow"></div>
               <div class="flow-box">
-                <strong>Laravel API + services IA</strong>
-                <span>R&eacute;ception des synchros, validation, orchestrations, notifications et traitements intelligents.</span>
+                <strong>PostgreSQL local + stockage documentaire</strong>
+                <span>Le site conserve sa base partag&eacute;e et ses documents avant synchronisation vers le central.</span>
+              </div>
+              <div class="flow-arrow"></div>
+              <div class="flow-box">
+                <strong>Service de synchro + Laravel central</strong>
+                <span>Les op&eacute;rations sont transmises, valid&eacute;es et enrichies par les workflows, notifications et services IA centraux.</span>
               </div>
               <div class="flow-arrow"></div>
               <div class="flow-box">
                 <strong>PostgreSQL central + pilotage</strong>
-                <span>Donn&eacute;es consolid&eacute;es, audit, reporting, tableaux de bord et partage entre sites ou utilisateurs.</span>
+                <span>Donn&eacute;es consolid&eacute;es, audit, reporting, tableaux de bord et partage entre sites, directions et utilisateurs autoris&eacute;s.</span>
               </div>
             </div>
           </article>
@@ -1689,8 +1813,8 @@
             <p>
               SIRH Intelligence Pro positionne la fonction RH et juridique comme un centre de pilotage,
               de conformit&eacute; et de performance. L&apos;&eacute;tape suivante consiste &agrave; cadrer le MVP,
-              prioriser les modules, mod&eacute;liser les donn&eacute;es et lancer le socle desktop offline-first
-              connect&eacute; &agrave; Laravel 12 + PostgreSQL.
+              prioriser les modules, mod&eacute;liser les donn&eacute;es et lancer le socle desktop multiutilisateur
+              avec serveur local de site, connect&eacute; &agrave; Laravel 12 + PostgreSQL.
             </p>
           </div>
           <a class="button primary" href="#roadmap">Voir la feuille de route</a>
@@ -1700,7 +1824,7 @@
   </main>
 
   <footer class="shell signature">
-    Presentation HTML du projet SIRH &amp; Juridique augmente par IA | Application desktop offline/online + Laravel 12 + PostgreSQL.
+    Presentation HTML du projet SIRH &amp; Juridique augmente par IA | Application desktop multiutilisateur + serveur local de site + Laravel 12 + PostgreSQL.
   </footer>
 
   <script>
