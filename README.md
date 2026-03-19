@@ -20,10 +20,10 @@ git remote add origin https://github.com/VOTRE-UTILISATEUR/sirh-intelligence-pro
 git push -u origin main
 ```
 
-3. Le depot contient deja un workflow GitHub Actions pour publier automatiquement le site.
-4. Sur GitHub, ouvrez `Settings` > `Pages`.
-5. Dans `Build and deployment`, choisissez `GitHub Actions`.
-6. Le site sera publie automatiquement apres le push sur `main`.
+3. Sur GitHub, ouvrez `Settings` > `Pages`.
+4. Dans `Build and deployment`, choisissez `Deploy from a branch`.
+5. Selectionnez la branche `main` et le dossier `/ (root)`.
+6. Enregistrez.
 
 Votre presentation sera ensuite accessible a l'adresse :
 
