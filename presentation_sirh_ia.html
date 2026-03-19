@@ -560,6 +560,128 @@
       gap: 18px;
     }
 
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .scenario-card,
+    .trust-card,
+    .impact-card {
+      padding: 26px;
+      border-radius: var(--radius-lg);
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scenario-card::before,
+    .trust-card::before,
+    .impact-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 110px;
+      height: 110px;
+      border-radius: 0 0 110px 0;
+      background: linear-gradient(135deg, rgba(74, 193, 192, 0.14), transparent);
+      pointer-events: none;
+    }
+
+    .scenario-card h3,
+    .trust-card h3,
+    .impact-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.45rem;
+      font-family: "Fraunces", Georgia, serif;
+      letter-spacing: -0.03em;
+    }
+
+    .scenario-label {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(74, 193, 192, 0.12);
+      border: 1px solid rgba(74, 193, 192, 0.24);
+      color: #c8fff3;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .scenario-block {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .scenario-block strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff2cf;
+    }
+
+    .scenario-steps {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .scenario-steps li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: start;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .step-no {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #09111c;
+      font-size: 0.9rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--mint), var(--teal));
+      flex-shrink: 0;
+    }
+
+    .trust-grid,
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .impact-card strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 2rem;
+      color: #fff2cf;
+    }
+
+    .trust-card p,
+    .impact-card p,
+    .scenario-card p,
+    .scenario-block p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
     .stack-list {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -665,7 +787,8 @@
       .hero-grid,
       .section-heading,
       .stack-grid,
-      .cta-card {
+      .cta-card,
+      .scenario-grid {
         grid-template-columns: 1fr;
       }
 
@@ -674,7 +797,9 @@
         flex-direction: column;
       }
 
-      .card-grid {
+      .card-grid,
+      .trust-grid,
+      .impact-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -714,7 +839,9 @@
       .mini-grid,
       .card-grid,
       .timeline,
-      .stack-list {
+      .stack-list,
+      .trust-grid,
+      .impact-grid {
         grid-template-columns: 1fr;
       }
 
@@ -741,9 +868,12 @@
       </div>
 
       <nav class="nav">
+        <a href="#pain">Enjeux</a>
         <a href="#vision">Vision</a>
         <a href="#modules">Modules</a>
+        <a href="#scenarios">Scenarios</a>
         <a href="#ia">IA &amp; Automatisation</a>
+        <a href="#governance">Gouvernance</a>
         <a href="#stack">Architecture</a>
         <a href="#roadmap">Roadmap</a>
       </nav>
@@ -839,6 +969,62 @@
 
     <section id="vision">
       <div class="shell">
+        <div class="section-heading reveal" id="pain">
+          <div>
+            <span>Enjeux Actuels</span>
+            <h2>Pourquoi les directions RH et juridiques ont besoin d&apos;une rupture digitale.</h2>
+          </div>
+          <p>
+            Dans beaucoup d&apos;organisations, les donn&eacute;es sont dispers&eacute;es, les validations sont lentes,
+            les dossiers sensibles sont difficiles &agrave; suivre et la conformit&eacute; repose encore sur des
+            rappels manuels. C&apos;est ce point de friction que la plateforme vient supprimer.
+          </p>
+        </div>
+
+        <div class="card-grid" style="margin-bottom: 28px;">
+          <article class="big-card reveal">
+            <div class="card-index">P1</div>
+            <h3>Information dispers&eacute;e</h3>
+            <p>
+              Dossiers salari&eacute;s, contrats, courriers, actes et preuves sont souvent r&eacute;partis entre mails,
+              fichiers bureautiques, messagerie et dossiers partag&eacute;s.
+            </p>
+            <ul class="bullet-list">
+              <li>Recherche lente et perte de temps.</li>
+              <li>Vision incompl&egrave;te du dossier.</li>
+              <li>Risque de doublons et de versions contradictoires.</li>
+            </ul>
+          </article>
+
+          <article class="big-card reveal">
+            <div class="card-index">P2</div>
+            <h3>Faible ma&icirc;trise des &eacute;ch&eacute;ances</h3>
+            <p>
+              Les obligations r&eacute;glementaires, renouvellements de contrats ou actions disciplinaires
+              d&eacute;pendent trop souvent de suivis manuels.
+            </p>
+            <ul class="bullet-list">
+              <li>Retards dans les traitements.</li>
+              <li>Oublis sur les &eacute;ch&eacute;ances sensibles.</li>
+              <li>Faible tra&ccedil;abilit&eacute; des validations.</li>
+            </ul>
+          </article>
+
+          <article class="big-card reveal">
+            <div class="card-index">P3</div>
+            <h3>Charge op&eacute;rationnelle excessive</h3>
+            <p>
+              Les &eacute;quipes RH et juridiques passent trop de temps sur des t&acirc;ches de classement, de relance,
+              de r&eacute;daction r&eacute;p&eacute;titive et de v&eacute;rification documentaire.
+            </p>
+            <ul class="bullet-list">
+              <li>Baisse de productivit&eacute;.</li>
+              <li>Temps limit&eacute; pour l&apos;analyse et la d&eacute;cision.</li>
+              <li>Qualit&eacute; variable selon les personnes et le contexte.</li>
+            </ul>
+          </article>
+        </div>
+
         <div class="section-heading reveal">
           <div>
             <span>Vision</span>
@@ -1022,6 +1208,77 @@
       </div>
     </section>
 
+    <section id="scenarios">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <span>Scenarios</span>
+            <h2>Deux parcours concrets pour montrer la valeur op&eacute;rationnelle.</h2>
+          </div>
+          <p>
+            Au-del&agrave; des modules, la plateforme est pens&eacute;e pour fluidifier des cas r&eacute;els. Voici comment
+            un traitement RH et un traitement juridique deviennent plus rapides, mieux trac&eacute;s et mieux assist&eacute;s.
+          </p>
+        </div>
+
+        <div class="scenario-grid">
+          <article class="scenario-card reveal">
+            <span class="scenario-label">Scenario RH</span>
+            <h3>Demande de cong&eacute; avec impact &eacute;quipe</h3>
+            <p>
+              Le manager ne re&ccedil;oit plus une simple demande &agrave; valider. Il dispose d&apos;un dossier complet,
+              d&apos;une alerte sur les conflits possibles et d&apos;une recommandation assist&eacute;e.
+            </p>
+
+            <div class="scenario-block">
+              <strong>Avant</strong>
+              <p>
+                La demande arrive par mail ou WhatsApp, la validation est informelle, le suivi est manuel
+                et personne ne voit imm&eacute;diatement les impacts sur la charge ou les absences simultan&eacute;es.
+              </p>
+            </div>
+
+            <div class="scenario-block">
+              <strong>Apr&egrave;s</strong>
+              <ul class="scenario-steps">
+                <li><span class="step-no">1</span><span>Le salari&eacute; soumet sa demande dans l&apos;espace self-service.</span></li>
+                <li><span class="step-no">2</span><span>Le moteur v&eacute;rifie les droits, les soldes et les conflits calendaires.</span></li>
+                <li><span class="step-no">3</span><span>L&apos;IA signale les points de vigilance et r&eacute;sume l&apos;impact &eacute;quipe.</span></li>
+                <li><span class="step-no">4</span><span>Le manager valide, refuse ou demande un ajustement, avec journalisation automatique.</span></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="scenario-card reveal">
+            <span class="scenario-label">Scenario Juridique</span>
+            <h3>Avenant contractuel ou dossier disciplinaire</h3>
+            <p>
+              Les dossiers sensibles ne sont plus g&eacute;r&eacute;s en morceaux. Chaque document, chaque validation
+              et chaque version sont suivis dans un m&ecirc;me flux.
+            </p>
+
+            <div class="scenario-block">
+              <strong>Avant</strong>
+              <p>
+                Les versions circulent par mail, la clause &agrave; corriger n&apos;est pas toujours identifi&eacute;e,
+                les pi&egrave;ces manquent souvent et le suivi des validations reste partiel.
+              </p>
+            </div>
+
+            <div class="scenario-block">
+              <strong>Apr&egrave;s</strong>
+              <ul class="scenario-steps">
+                <li><span class="step-no">1</span><span>Le juriste ouvre un dossier et charge les pi&egrave;ces utiles dans l&apos;espace s&eacute;curis&eacute;.</span></li>
+                <li><span class="step-no">2</span><span>L&apos;IA compare les versions, r&eacute;sume le contexte et signale les clauses ou pi&egrave;ces manquantes.</span></li>
+                <li><span class="step-no">3</span><span>Le workflow juridique distribue les validations selon le niveau d&apos;autorisation requis.</span></li>
+                <li><span class="step-no">4</span><span>Le document final est archiv&eacute; avec sa piste d&apos;audit et ses d&eacute;cisions associ&eacute;es.</span></li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="ia">
       <div class="shell">
         <div class="section-heading reveal">
@@ -1124,6 +1381,73 @@
       </div>
     </section>
 
+    <section id="governance">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <span>Gouvernance IA</span>
+            <h2>Une IA utile, mais encadr&eacute;e par des r&egrave;gles m&eacute;tier, humaines et juridiques.</h2>
+          </div>
+          <p>
+            La plateforme ne remplace pas la d&eacute;cision humaine sur les dossiers sensibles. Elle assiste,
+            acc&eacute;l&egrave;re et s&eacute;curise, tout en laissant les validations finales aux personnes habilit&eacute;es.
+          </p>
+        </div>
+
+        <div class="trust-grid">
+          <article class="trust-card reveal">
+            <h3>Ce que l&apos;IA fera</h3>
+            <p>
+              Lire, r&eacute;sumer, comparer, alerter, classer, extraire les informations cl&eacute;s et proposer
+              des brouillons ou recommandations sur la base des donn&eacute;es disponibles.
+            </p>
+          </article>
+
+          <article class="trust-card reveal">
+            <h3>Ce que l&apos;IA ne fera pas seule</h3>
+            <p>
+              D&eacute;cider d&apos;une sanction, valider un acte final, engager une responsabilit&eacute; juridique
+              ou contourner les niveaux d&apos;autorisation pr&eacute;vus par l&apos;organisation.
+            </p>
+          </article>
+
+          <article class="trust-card reveal">
+            <h3>Cadre de confiance</h3>
+            <p>
+              Droits d&apos;acc&egrave;s, piste d&apos;audit, journalisation des actions, validation humaine,
+              archivage probant et protection des donn&eacute;es sensibles sont int&eacute;gr&eacute;s au socle.
+            </p>
+          </article>
+        </div>
+
+        <div class="impact-grid" style="margin-top:18px;">
+          <article class="impact-card reveal">
+            <strong>-50%</strong>
+            <h3>D&eacute;lai de traitement</h3>
+            <p>
+              Objectif sur les demandes courantes gr&acirc;ce aux workflows, aux notifications et aux contr&ocirc;les assist&eacute;s.
+            </p>
+          </article>
+
+          <article class="impact-card reveal">
+            <strong>+100%</strong>
+            <h3>Tra&ccedil;abilit&eacute;</h3>
+            <p>
+              Chaque action, validation, version documentaire et d&eacute;cision reste historis&eacute;e dans un m&ecirc;me syst&egrave;me.
+            </p>
+          </article>
+
+          <article class="impact-card reveal">
+            <strong>-30%</strong>
+            <h3>Charge manuelle</h3>
+            <p>
+              R&eacute;duction cibl&eacute;e sur la recherche documentaire, les relances, les contr&ocirc;les de compl&eacute;tude et la r&eacute;daction r&eacute;p&eacute;titive.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="stack">
       <div class="shell">
         <div class="section-heading reveal">
@@ -1212,34 +1536,34 @@
 
         <div class="timeline">
           <article class="timeline-item reveal">
-            <strong>Phase 1</strong>
-            <h4>Cadrage et mod&eacute;lisation</h4>
+            <strong>MVP 1</strong>
+            <h4>Cadrage et noyau RH</h4>
             <p>
               Recueil des besoins, cartographie des processus, mod&egrave;le de donn&eacute;es,
-              r&ocirc;les utilisateurs et architecture fonctionnelle.
+              r&ocirc;les utilisateurs, dossiers salari&eacute;s et premiers workflows RH.
             </p>
           </article>
 
           <article class="timeline-item reveal">
-            <strong>Phase 2</strong>
-            <h4>Noyau RH et documentaire</h4>
+            <strong>MVP 2</strong>
+            <h4>Socle juridique et documentaire</h4>
             <p>
-              Mise en place des dossiers salari&eacute;s, demandes RH, gestion documentaire,
-              authentification et premi&egrave;res validations.
+              Mise en place des contrats, actes, conformit&eacute;, gestion documentaire,
+              authentification et validations m&eacute;tiers.
             </p>
           </article>
 
           <article class="timeline-item reveal">
-            <strong>Phase 3</strong>
-            <h4>Juridique et automatisation</h4>
+            <strong>V2</strong>
+            <h4>Automatisation et self-service</h4>
             <p>
-              Ajout des actes, &eacute;ch&eacute;ances, workflows avanc&eacute;s, notifications,
-              relances, audit et tableaux de bord op&eacute;rationnels.
+              Workflows avanc&eacute;s, notifications, relances, portail salari&eacute;/manager,
+              audit et tableaux de bord op&eacute;rationnels.
             </p>
           </article>
 
           <article class="timeline-item reveal">
-            <strong>Phase 4</strong>
+            <strong>V3</strong>
             <h4>IA et pilotage avanc&eacute;</h4>
             <p>
               Assistant intelligent, recherche augment&eacute;e, synth&egrave;ses, contr&ocirc;les
@@ -1254,14 +1578,14 @@
       <div class="shell">
         <article class="cta-card reveal">
           <div class="cta-copy">
-            <h2>R&eacute;sultat attendu: une plateforme strat&eacute;gique, pas un simple outil de gestion.</h2>
+            <h2>Prochaine &eacute;tape: transformer cette vision en plateforme ex&eacute;cutable.</h2>
             <p>
               SIRH Intelligence Pro positionne la fonction RH et juridique comme un centre de pilotage,
-              de conformit&eacute; et de performance. La combinaison Laravel 12, PostgreSQL, IA et automatisation
-              permet de construire une solution fiable, rapide &agrave; faire &eacute;voluer et pr&ecirc;te pour la croissance.
+              de conformit&eacute; et de performance. L&apos;&eacute;tape suivante consiste &agrave; cadrer le MVP,
+              prioriser les modules, mod&eacute;liser les donn&eacute;es et lancer le socle Laravel 12 + PostgreSQL.
             </p>
           </div>
-          <a class="button primary" href="#vision">Pr&eacute;senter la vision</a>
+          <a class="button primary" href="#roadmap">Voir la feuille de route</a>
         </article>
       </div>
     </section>
