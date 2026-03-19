@@ -938,9 +938,9 @@
           <p>
             Cette solution centralise les processus RH, les dossiers salari&eacute;s, les contrats,
             les validations, la conformit&eacute; sociale et les actes juridiques dans une plateforme
-            moderne, assist&eacute;e par intelligence artificielle et automatisation compl&egrave;te. Pour un usage
-            multiutilisateur, les postes desktop travaillent sur un serveur local du site, puis les
-            donn&eacute;es sont synchronis&eacute;es vers la plateforme centrale d&egrave;s que la connexion revient.
+            moderne, assist&eacute;e par intelligence artificielle et automatisation compl&egrave;te. Elle combine
+            une application desktop m&eacute;tier, des applications mobiles Flutter online pour employ&eacute;s et
+            administrateurs, puis un socle serveur adaptable selon le mode choisi &agrave; l&apos;installation.
           </p>
 
           <div class="hero-actions">
@@ -954,8 +954,8 @@
               <span>Vue unifi&eacute;e RH, juridique, conformit&eacute; et reporting d&eacute;cisionnel</span>
             </div>
             <div class="metric">
-              <strong>Offline</strong>
-              <span>Serveur local de site pour le multiutilisateur, puis synchronisation automatique vers la plateforme centrale</span>
+              <strong>Desktop + Mobile</strong>
+              <span>Application desktop, applications Flutter online, pointage mobile et acc&egrave;s aux donn&eacute;es selon le r&ocirc;le</span>
             </div>
             <div class="metric">
               <strong>IA</strong>
@@ -989,8 +989,8 @@
                 <p>Biblioth&egrave;que d&apos;actes, suivi des obligations, rappels et contr&ocirc;le documentaire.</p>
               </div>
               <div class="mini-card">
-                <strong>Desktop + serveur local</strong>
-                <p>Les &eacute;quipes continuent &agrave; travailler sur le r&eacute;seau local du site, puis le serveur synchronise vers le central.</p>
+                <strong>Mobile Flutter online</strong>
+                <p>App employ&eacute; et app admin pour pointage, rapport de journ&eacute;e, acc&egrave;s mobile aux donn&eacute;es et supervision terrain.</p>
               </div>
               <div class="mini-card">
                 <strong>Copilote IA</strong>
@@ -1152,7 +1152,7 @@
               <p>
                 La plateforme RH ne se limite pas &agrave; l&apos;administration du personnel. Elle couvre aussi
                 le recrutement, l&apos;int&eacute;gration, les absences, la performance, la formation, la mise en relation
-                avec des cabinets et le pilotage manager.
+                avec des cabinets, le pilotage manager et des applications mobiles Flutter selon le type d&apos;utilisateur.
               </p>
             </div>
           </div>
@@ -1196,6 +1196,18 @@
                 <li>Espace d&apos;inscription des cabinets et organismes de formation avec profil, domaines d&apos;expertise, offres, r&eacute;f&eacute;rences, disponibilit&eacute;s et localisation.</li>
                 <li>Pour chaque besoin de formation, la plateforme propose des cabinets pertinents ou permet une recherche libre multicrit&egrave;re dans l&apos;annuaire int&eacute;gr&eacute;.</li>
                 <li>IA: synth&egrave;se d&apos;entretiens, cartographie des comp&eacute;tences, recommandation de formations et suggestion intelligente de cabinets selon besoin, budget, localisation et historique.</li>
+              </ul>
+            </article>
+
+            <article class="big-card reveal">
+              <div class="card-index">RH5</div>
+              <h3>Applications mobiles Flutter online</h3>
+              <ul class="bullet-list">
+                <li>Deux applications mobiles: <strong>app employ&eacute;</strong> et <strong>app admin</strong>, avec acc&egrave;s aux donn&eacute;es et &eacute;crans selon le type d&apos;utilisateur et son r&ocirc;le.</li>
+                <li>Pointage de pr&eacute;sence mobile avec <strong>in clock</strong> et <strong>out clock</strong>, plus rapport de journ&eacute;e obligatoire avant cl&ocirc;ture de la journ&eacute;e.</li>
+                <li>Pr&eacute;sence autoris&eacute;e uniquement dans des zones g&eacute;ographiques d&eacute;finies: bureau, chantier 1, chantier 2, site client ou tout autre p&eacute;rim&egrave;tre valid&eacute;.</li>
+                <li>L&apos;employ&eacute; consulte ses propres donn&eacute;es; l&apos;admin ou le manager suit les &eacute;quipes, les pointages, les rapports du jour, les validations et les alertes terrain.</li>
+                <li>IA: d&eacute;tection d&apos;anomalies de pointage, contr&ocirc;le g&eacute;ographique, synth&egrave;se des rapports journaliers, alerte sur oublis de cl&ocirc;ture et analyse des habitudes de pr&eacute;sence.</li>
               </ul>
             </article>
           </div>
@@ -1678,13 +1690,13 @@ DEFAULT_PRINTER=HP-LaserJet-RH</pre>
         <div class="section-heading reveal">
           <div>
             <span>Architecture Technique</span>
-            <h2>Application desktop + serveur local optionnel + Laravel 12 + PostgreSQL pour un socle adaptable.</h2>
+            <h2>Application desktop + mobile Flutter online + serveur local optionnel + Laravel 12 + PostgreSQL pour un socle adaptable.</h2>
           </div>
           <p>
             La r&eacute;alisation technique s&apos;adapte au mode choisi &agrave; l&apos;installation. En `online`, les postes
-            se connectent au backend central. En `offline`, le site travaille sur son serveur local. En
-            `offline + online`, le serveur local du site est reli&eacute; &agrave; Laravel 12 et &agrave; PostgreSQL central
-            pour assurer la synchronisation et le pilotage global.
+            desktop et les applications mobiles Flutter se connectent au backend central. En `offline`,
+            le site travaille sur son serveur local. En `offline + online`, le serveur local du site est
+            reli&eacute; &agrave; Laravel 12 et &agrave; PostgreSQL central pour assurer la synchronisation et le pilotage global.
           </p>
         </div>
 
@@ -1695,6 +1707,10 @@ DEFAULT_PRINTER=HP-LaserJet-RH</pre>
               <div class="stack-item">
                 <strong>Application desktop</strong>
                 <span>Interface m&eacute;tier install&eacute;e sur chaque poste RH, juridique ou manager pour la saisie et la consultation des dossiers.</span>
+              </div>
+              <div class="stack-item">
+                <strong>Applications mobiles Flutter online</strong>
+                <span>App employ&eacute; et app admin pour le pointage, le rapport de journ&eacute;e, les validations et l&apos;acc&egrave;s mobile aux donn&eacute;es selon le r&ocirc;le.</span>
               </div>
               <div class="stack-item">
                 <strong>Serveur local du site</strong>
@@ -1723,13 +1739,13 @@ DEFAULT_PRINTER=HP-LaserJet-RH</pre>
             <h3>Logique de plateforme</h3>
             <div class="architecture-flow">
               <div class="flow-box">
-                <strong>Postes desktop</strong>
-                <span>Les utilisateurs saisissent leurs op&eacute;rations RH et juridiques depuis l&apos;application install&eacute;e sur chaque PC.</span>
+                <strong>Desktop + apps mobiles Flutter</strong>
+                <span>Les utilisateurs travaillent depuis le desktop ou depuis le mobile selon leur r&ocirc;le; l&apos;app mobile g&egrave;re notamment le pointage, le rapport journalier et l&apos;acc&egrave;s terrain.</span>
               </div>
               <div class="flow-arrow"></div>
               <div class="flow-box">
-                <strong>API locale du site</strong>
-                <span>Le serveur local re&ccedil;oit les requ&ecirc;tes des postes et applique les r&egrave;gles m&eacute;tier utiles au niveau du bureau.</span>
+                <strong>API locale du site / API centrale</strong>
+                <span>Selon le mode d&apos;installation, les requ&ecirc;tes transitent par le serveur local du site ou directement par l&apos;API centrale Laravel.</span>
               </div>
               <div class="flow-arrow"></div>
               <div class="flow-box">
@@ -1786,10 +1802,10 @@ DEFAULT_PRINTER=HP-LaserJet-RH</pre>
 
           <article class="timeline-item reveal">
             <strong>V2</strong>
-            <h4>Automatisation et self-service</h4>
+            <h4>Automatisation, self-service et mobile</h4>
             <p>
               Workflows avanc&eacute;s, notifications, relances, portail salari&eacute;/manager,
-              audit et tableaux de bord op&eacute;rationnels.
+              applications Flutter employ&eacute;/admin, audit et tableaux de bord op&eacute;rationnels.
             </p>
           </article>
 
@@ -1824,7 +1840,7 @@ DEFAULT_PRINTER=HP-LaserJet-RH</pre>
   </main>
 
   <footer class="shell signature">
-    Presentation HTML du projet SIRH &amp; Juridique augmente par IA | Application desktop multiutilisateur + serveur local de site + Laravel 12 + PostgreSQL.
+    Presentation HTML du projet SIRH &amp; Juridique augmente par IA | Application desktop + mobile Flutter online + serveur local optionnel + Laravel 12 + PostgreSQL.
   </footer>
 
   <script>
