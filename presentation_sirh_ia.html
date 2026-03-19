@@ -432,6 +432,55 @@
       gap: 18px;
     }
 
+    .module-group {
+      margin-bottom: 28px;
+    }
+
+    .module-group-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .module-group-header h3 {
+      margin: 12px 0 0;
+      font-size: 1.65rem;
+      font-family: "Fraunces", Georgia, serif;
+      letter-spacing: -0.03em;
+    }
+
+    .module-group-header p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 72ch;
+    }
+
+    .module-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .module-pill.rh {
+      color: #ffe7b1;
+      background: rgba(231, 180, 90, 0.12);
+      border: 1px solid rgba(231, 180, 90, 0.25);
+    }
+
+    .module-pill.legal {
+      color: #c8fff3;
+      background: rgba(74, 193, 192, 0.12);
+      border: 1px solid rgba(74, 193, 192, 0.25);
+    }
+
     .big-card,
     .stack-panel,
     .timeline-item,
@@ -618,6 +667,11 @@
       .stack-grid,
       .cta-card {
         grid-template-columns: 1fr;
+      }
+
+      .module-group-header {
+        align-items: start;
+        flex-direction: column;
       }
 
       .card-grid {
@@ -856,66 +910,114 @@
           </p>
         </div>
 
-        <div class="card-grid">
-          <article class="big-card reveal">
-            <div class="card-index">A</div>
-            <h3>Administration du personnel</h3>
-            <ul class="bullet-list">
-              <li>Fiches salari&eacute;s, organigrammes, affectations et carri&egrave;res.</li>
-              <li>Contrats, avenants, historique et documents de r&eacute;f&eacute;rence.</li>
-              <li>Suivi des absences, cong&eacute;s, justificatifs et validations.</li>
-            </ul>
-          </article>
+        <div class="module-group reveal">
+          <div class="module-group-header">
+            <div>
+              <span class="module-pill rh">Modules RH</span>
+              <h3>Les modules RH couvrent tout le cycle de vie du salari&eacute;.</h3>
+              <p>
+                La plateforme RH ne se limite pas &agrave; l&apos;administration du personnel. Elle couvre aussi
+                le recrutement, l&apos;int&eacute;gration, les absences, la performance, la formation et le pilotage manager.
+              </p>
+            </div>
+          </div>
 
-          <article class="big-card reveal">
-            <div class="card-index">B</div>
-            <h3>Juridique et conformit&eacute;</h3>
-            <ul class="bullet-list">
-              <li>Mod&egrave;les d&apos;actes, d&eacute;cisions, lettres et proc&eacute;dures.</li>
-              <li>Calendrier d&apos;&eacute;ch&eacute;ances et obligations r&eacute;glementaires.</li>
-              <li>Archivage probant et tra&ccedil;abilit&eacute; des validations.</li>
-            </ul>
-          </article>
+          <div class="card-grid">
+            <article class="big-card reveal">
+              <div class="card-index">RH1</div>
+              <h3>Dossier salari&eacute; &amp; administration RH</h3>
+              <ul class="bullet-list">
+                <li>Fiches salari&eacute;s, affectations, carri&egrave;res, documents et historique complet.</li>
+                <li>Contrats, avenants, situation administrative et organigrammes.</li>
+                <li>IA: contr&ocirc;le de compl&eacute;tude, synth&egrave;se du dossier et r&eacute;ponses aux questions RH.</li>
+              </ul>
+            </article>
 
-          <article class="big-card reveal">
-            <div class="card-index">C</div>
-            <h3>Demandes et workflows</h3>
-            <ul class="bullet-list">
-              <li>Circuits de validation param&eacute;trables par r&ocirc;le ou service.</li>
-              <li>Notifications, relances et escalades automatiques.</li>
-              <li>Suivi de statut en temps r&eacute;el pour chaque dossier.</li>
-            </ul>
-          </article>
+            <article class="big-card reveal">
+              <div class="card-index">RH2</div>
+              <h3>Recrutement &amp; onboarding</h3>
+              <ul class="bullet-list">
+                <li>Demandes de recrutement, candidatures, entretiens et parcours d&apos;int&eacute;gration.</li>
+                <li>Checklists d&apos;arriv&eacute;e, pi&egrave;ces &agrave; fournir et t&acirc;ches d&apos;accueil.</li>
+                <li>IA: pr&eacute;tri des CV, scoring profil/poste et g&eacute;n&eacute;ration du plan d&apos;onboarding.</li>
+              </ul>
+            </article>
 
-          <article class="big-card reveal">
-            <div class="card-index">D</div>
-            <h3>Tableaux de bord</h3>
-            <ul class="bullet-list">
-              <li>KPIs RH: effectifs, absences, rotation, d&eacute;lais et charges.</li>
-              <li>KPIs juridiques: risques, &eacute;ch&eacute;ances et volum&eacute;trie documentaire.</li>
-              <li>Exports PDF, Excel et rapports de direction.</li>
-            </ul>
-          </article>
+            <article class="big-card reveal">
+              <div class="card-index">RH3</div>
+              <h3>Absences, cong&eacute;s &amp; temps</h3>
+              <ul class="bullet-list">
+                <li>Demandes de cong&eacute;s, absences, justificatifs, validations et relances.</li>
+                <li>Vision manager sur disponibilit&eacute;s, charges et continuit&eacute; de service.</li>
+                <li>IA: d&eacute;tection d&apos;anomalies, pr&eacute;vision d&apos;impact &eacute;quipe et relances automatiques.</li>
+              </ul>
+            </article>
 
-          <article class="big-card reveal">
-            <div class="card-index">E</div>
-            <h3>Gestion documentaire</h3>
-            <ul class="bullet-list">
-              <li>Classement intelligent des pi&egrave;ces par type et contexte.</li>
-              <li>Versioning, indexation et moteur de recherche avanc&eacute;.</li>
-              <li>Pr&eacute;visualisation et r&eacute;f&eacute;rencement crois&eacute; des dossiers.</li>
-            </ul>
-          </article>
+            <article class="big-card reveal">
+              <div class="card-index">RH4</div>
+              <h3>Performance, comp&eacute;tences &amp; formation</h3>
+              <ul class="bullet-list">
+                <li>Entretiens, objectifs, comp&eacute;tences, plans d&apos;&eacute;volution et suivi formation.</li>
+                <li>Tableaux de bord sur talents, besoins de mont&eacute;e en comp&eacute;tence et progression.</li>
+                <li>IA: synth&egrave;se d&apos;entretiens, recommandations de formation et cartographie des comp&eacute;tences.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
 
-          <article class="big-card reveal">
-            <div class="card-index">F</div>
-            <h3>Espace self-service</h3>
-            <ul class="bullet-list">
-              <li>Demandes salari&eacute;s, consultation de documents et suivi des tickets.</li>
-              <li>Acc&egrave;s manager aux validations et aux indicateurs d&apos;&eacute;quipe.</li>
-              <li>Exp&eacute;rience fluide sur desktop et mobile.</li>
-            </ul>
-          </article>
+        <div class="module-group reveal">
+          <div class="module-group-header">
+            <div>
+              <span class="module-pill legal">Modules Juridiques</span>
+              <h3>Les modules juridiques s&eacute;curisent les actes, les obligations et la preuve.</h3>
+              <p>
+                Le p&ocirc;le juridique est pens&eacute; comme un espace op&eacute;rationnel: r&eacute;daction, validation,
+                conformit&eacute;, suivi des dossiers sensibles et conservation probante.
+              </p>
+            </div>
+          </div>
+
+          <div class="card-grid">
+            <article class="big-card reveal">
+              <div class="card-index">J1</div>
+              <h3>Contrats, avenants &amp; actes</h3>
+              <ul class="bullet-list">
+                <li>Biblioth&egrave;que de mod&egrave;les, g&eacute;n&eacute;ration de documents et circuits de validation.</li>
+                <li>Gestion des versions, historique des changements et archivage final.</li>
+                <li>IA: r&eacute;daction assist&eacute;e, comparaison de versions et contr&ocirc;le de clauses sensibles.</li>
+              </ul>
+            </article>
+
+            <article class="big-card reveal">
+              <div class="card-index">J2</div>
+              <h3>Disciplinaire, contentieux &amp; litiges</h3>
+              <ul class="bullet-list">
+                <li>Suivi des dossiers sensibles, pi&egrave;ces, &eacute;tapes, observations et d&eacute;cisions.</li>
+                <li>Chronologie des faits et centralisation des documents de preuve.</li>
+                <li>IA: r&eacute;sum&eacute; chronologique, rep&eacute;rage des pi&egrave;ces manquantes et pr&eacute;paration de synth&egrave;ses.</li>
+              </ul>
+            </article>
+
+            <article class="big-card reveal">
+              <div class="card-index">J3</div>
+              <h3>Conformit&eacute; sociale &amp; veille</h3>
+              <ul class="bullet-list">
+                <li>Calendrier d&apos;&eacute;ch&eacute;ances, obligations r&eacute;glementaires et contr&ocirc;les internes.</li>
+                <li>Suivi des politiques internes, proc&eacute;dures et engagements de conformit&eacute;.</li>
+                <li>IA: analyse d&apos;impact, alertes sur les points critiques et proposition de mise &agrave; jour des proc&eacute;dures.</li>
+              </ul>
+            </article>
+
+            <article class="big-card reveal">
+              <div class="card-index">J4</div>
+              <h3>Archivage, preuve &amp; recherche juridique</h3>
+              <ul class="bullet-list">
+                <li>Classement, indexation, versioning, piste d&apos;audit et archivage probant.</li>
+                <li>Recherche rapide des actes, d&eacute;cisions, lettres et dossiers clos.</li>
+                <li>IA: extraction de m&eacute;tadonn&eacute;es, classement automatique et recherche s&eacute;mantique.</li>
+              </ul>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -981,6 +1083,44 @@
             </div>
           </article>
         </div>
+
+        <article class="stack-panel reveal" style="margin-top:18px;">
+          <h3>Ce que fera l&apos;IA dans chaque module</h3>
+          <div class="stack-list">
+            <div class="stack-item">
+              <strong>Dossier salari&eacute;</strong>
+              <span>V&eacute;rifier les champs manquants, r&eacute;sumer un profil et retrouver l&apos;historique utile.</span>
+            </div>
+            <div class="stack-item">
+              <strong>Recrutement</strong>
+              <span>Comparer les CV aux besoins, prioriser les profils et pr&eacute;parer les synth&egrave;ses d&apos;entretien.</span>
+            </div>
+            <div class="stack-item">
+              <strong>Cong&eacute;s &amp; absences</strong>
+              <span>Rep&eacute;rer les anomalies, estimer l&apos;impact sur l&apos;&eacute;quipe et automatiser les relances.</span>
+            </div>
+            <div class="stack-item">
+              <strong>Performance &amp; formation</strong>
+              <span>Synth&eacute;tiser les entretiens et proposer des plans de progression ou de formation.</span>
+            </div>
+            <div class="stack-item">
+              <strong>Contrats &amp; actes</strong>
+              <span>R&eacute;diger des brouillons, comparer des versions et signaler les clauses &agrave; risque.</span>
+            </div>
+            <div class="stack-item">
+              <strong>Litiges &amp; disciplinaire</strong>
+              <span>Construire une chronologie claire, r&eacute;sumer les faits et indiquer les pi&egrave;ces manquantes.</span>
+            </div>
+            <div class="stack-item">
+              <strong>Conformit&eacute; sociale</strong>
+              <span>Identifier les obligations critiques, proposer des actions et aider aux contr&ocirc;les.</span>
+            </div>
+            <div class="stack-item">
+              <strong>Archives juridiques</strong>
+              <span>Classer les pi&egrave;ces, extraire les m&eacute;tadonn&eacute;es et retrouver un document par sens.</span>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
