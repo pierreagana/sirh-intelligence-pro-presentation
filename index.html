@@ -872,6 +872,7 @@
         <a href="#vision">Vision</a>
         <a href="#modules">Modules</a>
         <a href="#scenarios">Scenarios</a>
+        <a href="#offline">Offline/Online</a>
         <a href="#ia">IA &amp; Automatisation</a>
         <a href="#governance">Gouvernance</a>
         <a href="#stack">Architecture</a>
@@ -892,7 +893,9 @@
           <p>
             Cette solution centralise les processus RH, les dossiers salari&eacute;s, les contrats,
             les validations, la conformit&eacute; sociale et les actes juridiques dans une plateforme
-            moderne, assist&eacute;e par intelligence artificielle et automatisation compl&egrave;te.
+            moderne, assist&eacute;e par intelligence artificielle et automatisation compl&egrave;te. Le travail
+            se fait d&apos;abord en mode offline sur l&apos;application desktop, puis les donn&eacute;es sont
+            synchronis&eacute;es en ligne d&egrave;s que la connexion revient.
           </p>
 
           <div class="hero-actions">
@@ -906,8 +909,8 @@
               <span>Vue unifi&eacute;e RH, juridique, conformit&eacute; et reporting d&eacute;cisionnel</span>
             </div>
             <div class="metric">
-              <strong>24/7</strong>
-              <span>Automatisation continue des alertes, validations, relances et g&eacute;n&eacute;rations</span>
+              <strong>Offline</strong>
+              <span>Sauvegarde locale imm&eacute;diate sur desktop, puis synchronisation automatique des donn&eacute;es &agrave; la reconnexion</span>
             </div>
             <div class="metric">
               <strong>IA</strong>
@@ -941,8 +944,8 @@
                 <p>Biblioth&egrave;que d&apos;actes, suivi des obligations, rappels et contr&ocirc;le documentaire.</p>
               </div>
               <div class="mini-card">
-                <strong>Automatisation</strong>
-                <p>Workflows conditionnels, relances intelligentes, signatures, exports et tableaux de bord.</p>
+                <strong>Desktop offline-first</strong>
+                <p>Le travail continue sans Internet, avec stockage local s&eacute;curis&eacute; puis synchronisation en ligne.</p>
               </div>
               <div class="mini-card">
                 <strong>Copilote IA</strong>
@@ -1281,6 +1284,104 @@
       </div>
     </section>
 
+    <section id="offline">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <span>Desktop Offline/Online</span>
+            <h2>Le travail se fait d&apos;abord hors ligne, puis la plateforme synchronise en ligne.</h2>
+          </div>
+          <p>
+            La solution est pens&eacute;e comme une application desktop m&eacute;tier. L&apos;utilisateur peut continuer
+            &agrave; cr&eacute;er, modifier et consulter ses dossiers m&ecirc;me sans connexion Internet. D&egrave;s que le r&eacute;seau
+            revient, les donn&eacute;es enregistr&eacute;es localement sont envoy&eacute;es vers la plateforme centrale.
+          </p>
+        </div>
+
+        <div class="stack-grid">
+          <article class="stack-panel reveal">
+            <h3>Comment le travail se fait en offline</h3>
+            <div class="architecture-flow">
+              <div class="flow-box">
+                <strong>1. Saisie locale</strong>
+                <span>Chaque op&eacute;ration RH ou juridique est saisie dans l&apos;application desktop et sauvegard&eacute;e d&apos;abord en local.</span>
+              </div>
+              <div class="flow-arrow"></div>
+              <div class="flow-box">
+                <strong>2. Base locale s&eacute;curis&eacute;e</strong>
+                <span>Les donn&eacute;es, pi&egrave;ces et brouillons sont conserv&eacute;s sur le poste dans une base locale s&eacute;curis&eacute;e.</span>
+              </div>
+              <div class="flow-arrow"></div>
+              <div class="flow-box">
+                <strong>3. File d&apos;attente de synchro</strong>
+                <span>Chaque cr&eacute;ation, modification ou document est plac&eacute; dans une file de synchronisation en attente.</span>
+              </div>
+              <div class="flow-arrow"></div>
+              <div class="flow-box">
+                <strong>4. Continuit&eacute; de service</strong>
+                <span>L&apos;utilisateur continue &agrave; travailler normalement, m&ecirc;me sans acc&egrave;s Internet.</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="stack-panel reveal">
+            <h3>Ce qui se passe quand la connexion revient</h3>
+            <div class="architecture-flow">
+              <div class="flow-box">
+                <strong>1. D&eacute;tection du r&eacute;seau</strong>
+                <span>L&apos;application d&eacute;tecte automatiquement le retour de la connexion ou lance une synchro manuelle.</span>
+              </div>
+              <div class="flow-arrow"></div>
+              <div class="flow-box">
+                <strong>2. Envoi vers Laravel</strong>
+                <span>Les donn&eacute;es en attente sont envoy&eacute;es vers l&apos;API centrale pour validation, journalisation et traitement.</span>
+              </div>
+              <div class="flow-arrow"></div>
+              <div class="flow-box">
+                <strong>3. Stockage central PostgreSQL</strong>
+                <span>Les informations valid&eacute;es sont enregistr&eacute;es dans la base centrale et rendues disponibles aux autres postes.</span>
+              </div>
+              <div class="flow-arrow"></div>
+              <div class="flow-box">
+                <strong>4. Retour d&apos;&eacute;tat</strong>
+                <span>Le poste re&ccedil;oit l&apos;&eacute;tat de synchro, les accus&eacute;s de r&eacute;ception et les mises &agrave; jour utiles.</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <article class="stack-panel reveal" style="margin-top:18px;">
+          <h3>Principes cl&eacute;s du mode hybride</h3>
+          <div class="stack-list">
+            <div class="stack-item">
+              <strong>Offline-first</strong>
+              <span>La plateforme n&apos;attend pas Internet pour permettre la saisie et l&apos;ex&eacute;cution m&eacute;tier.</span>
+            </div>
+            <div class="stack-item">
+              <strong>Sauvegarde locale d&apos;abord</strong>
+              <span>Chaque donn&eacute;e est enregistr&eacute;e en local avant tout envoi vers le serveur central.</span>
+            </div>
+            <div class="stack-item">
+              <strong>Synchronisation automatique</strong>
+              <span>Les &eacute;l&eacute;ments en attente repartent seuls &agrave; la reconnexion, avec possibilit&eacute; de relancer manuellement.</span>
+            </div>
+            <div class="stack-item">
+              <strong>Journal de synchro</strong>
+              <span>Chaque envoi, reprise, erreur ou succ&egrave;s est trac&eacute; pour garder la visibilit&eacute; op&eacute;rationnelle.</span>
+            </div>
+            <div class="stack-item">
+              <strong>Gestion des conflits</strong>
+              <span>Les doubles modifications ou versions contradictoires peuvent &ecirc;tre d&eacute;tect&eacute;es puis arbitr&eacute;es.</span>
+            </div>
+            <div class="stack-item">
+              <strong>IA connect&eacute;e intelligemment</strong>
+              <span>Les r&egrave;gles m&eacute;tier essentielles restent disponibles hors ligne; les traitements IA avanc&eacute;s se compl&egrave;tent &agrave; la reconnexion.</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section id="ia">
       <div class="shell">
         <div class="section-heading reveal">
@@ -1459,12 +1560,12 @@
         <div class="section-heading reveal">
           <div>
             <span>Architecture Technique</span>
-            <h2>Laravel 12 + PostgreSQL pour un socle robuste, moderne et &eacute;volutif.</h2>
+            <h2>Application desktop offline-first + Laravel 12 + PostgreSQL pour un socle robuste et &eacute;volutif.</h2>
           </div>
           <p>
-            La r&eacute;alisation technique repose sur une architecture web s&eacute;curis&eacute;e et maintenable. Laravel 12
-            apporte la rapidit&eacute; de d&eacute;veloppement, la structuration des workflows et la qualit&eacute; de code,
-            tandis que PostgreSQL garantit la fiabilit&eacute; transactionnelle et l&apos;int&eacute;grit&eacute; des donn&eacute;es.
+            La r&eacute;alisation technique repose sur un client desktop m&eacute;tier avec base locale et moteur de
+            synchronisation, connect&eacute; &agrave; un backend Laravel 12 et une base PostgreSQL centrale. L&apos;ensemble
+            permet de travailler hors ligne, puis de consolider les donn&eacute;es en ligne d&egrave;s le retour du r&eacute;seau.
           </p>
         </div>
 
@@ -1473,24 +1574,24 @@
             <h3>Socle applicatif</h3>
             <div class="stack-list">
               <div class="stack-item">
-                <strong>Laravel 12</strong>
-                <span>Architecture claire, authentification, jobs, events, notifications et API modernes.</span>
+                <strong>Application desktop</strong>
+                <span>Interface m&eacute;tier locale pour les &eacute;quipes RH et juridiques, utilisable m&ecirc;me sans Internet.</span>
               </div>
               <div class="stack-item">
-                <strong>PostgreSQL</strong>
-                <span>Base relationnelle fiable, requ&ecirc;tes avanc&eacute;es, contraintes fortes et tra&ccedil;abilit&eacute; native.</span>
+                <strong>Base locale offline</strong>
+                <span>Stockage local s&eacute;curis&eacute; des donn&eacute;es, pi&egrave;ces et brouillons avant synchronisation.</span>
               </div>
               <div class="stack-item">
-                <strong>Files &amp; Documents</strong>
-                <span>Stockage s&eacute;curis&eacute; des pi&egrave;ces, indexation et versioning documentaire.</span>
+                <strong>Laravel 12 API</strong>
+                <span>Back-end central pour les workflows, l&apos;authentification, les r&egrave;gles m&eacute;tier et les services IA.</span>
               </div>
               <div class="stack-item">
-                <strong>API &amp; Int&eacute;grations</strong>
-                <span>Connexion possible &agrave; paie, messagerie, signature, ERP ou outils tiers.</span>
+                <strong>PostgreSQL central</strong>
+                <span>Base relationnelle centrale fiable, audit&eacute;e et partag&eacute;e entre les postes connect&eacute;s.</span>
               </div>
               <div class="stack-item">
-                <strong>Queues &amp; Automations</strong>
-                <span>Traitements diff&eacute;r&eacute;s, workflows lourds et notifications sans bloquer l&apos;exp&eacute;rience utilisateur.</span>
+                <strong>Sync &amp; Automations</strong>
+                <span>File de synchronisation, reprise automatique, traitements diff&eacute;r&eacute;s et notifications.</span>
               </div>
               <div class="stack-item">
                 <strong>S&eacute;curit&eacute;</strong>
@@ -1503,23 +1604,23 @@
             <h3>Logique de plateforme</h3>
             <div class="architecture-flow">
               <div class="flow-box">
-                <strong>Interface utilisateur</strong>
-                <span>Portail RH, espace manager, espace salari&eacute; et back-office juridique.</span>
+                <strong>Application desktop</strong>
+                <span>Saisie m&eacute;tier locale, consultation des dossiers et travail continu sur le poste de l&apos;utilisateur.</span>
               </div>
               <div class="flow-arrow"></div>
               <div class="flow-box">
-                <strong>Services Laravel</strong>
-                <span>Moteur m&eacute;tier, validations, orchestrations, notifications et services IA.</span>
+                <strong>Base locale + file de synchro</strong>
+                <span>Enregistrement offline d&apos;abord, stockage temporaire des changements et pi&egrave;ces en attente d&apos;envoi.</span>
               </div>
               <div class="flow-arrow"></div>
               <div class="flow-box">
-                <strong>PostgreSQL + stockage</strong>
-                <span>Donn&eacute;es structur&eacute;es, audit, documents, historiques et configurations.</span>
+                <strong>Laravel API + services IA</strong>
+                <span>R&eacute;ception des synchros, validation, orchestrations, notifications et traitements intelligents.</span>
               </div>
               <div class="flow-arrow"></div>
               <div class="flow-box">
-                <strong>Pilotage d&eacute;cisionnel</strong>
-                <span>Rapports, tableaux de bord, alertes et indicateurs consolid&eacute;s pour la direction.</span>
+                <strong>PostgreSQL central + pilotage</strong>
+                <span>Donn&eacute;es consolid&eacute;es, audit, reporting, tableaux de bord et partage entre sites ou utilisateurs.</span>
               </div>
             </div>
           </article>
@@ -1588,7 +1689,8 @@
             <p>
               SIRH Intelligence Pro positionne la fonction RH et juridique comme un centre de pilotage,
               de conformit&eacute; et de performance. L&apos;&eacute;tape suivante consiste &agrave; cadrer le MVP,
-              prioriser les modules, mod&eacute;liser les donn&eacute;es et lancer le socle Laravel 12 + PostgreSQL.
+              prioriser les modules, mod&eacute;liser les donn&eacute;es et lancer le socle desktop offline-first
+              connect&eacute; &agrave; Laravel 12 + PostgreSQL.
             </p>
           </div>
           <a class="button primary" href="#roadmap">Voir la feuille de route</a>
@@ -1598,7 +1700,7 @@
   </main>
 
   <footer class="shell signature">
-    Presentation HTML du projet SIRH &amp; Juridique augmente par IA | Stack cible: Laravel 12, PostgreSQL, automatisation complete.
+    Presentation HTML du projet SIRH &amp; Juridique augmente par IA | Application desktop offline/online + Laravel 12 + PostgreSQL.
   </footer>
 
   <script>
