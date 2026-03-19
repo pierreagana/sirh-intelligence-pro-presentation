@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIRH Intelligence Pro | Presentation Projet</title>
+  <meta
+    name="description"
+    content="Presentation HTML du projet SIRH et juridique augmente par IA avec automatisation complete, realise avec Laravel 12 et PostgreSQL."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #09111c;
+      --bg-soft: #101c2a;
+      --panel: rgba(13, 29, 45, 0.78);
+      --panel-strong: rgba(8, 20, 33, 0.92);
+      --line: rgba(125, 180, 201, 0.18);
+      --text: #edf3f7;
+      --muted: #aac0cb;
+      --gold: #e7b45a;
+      --teal: #4ac1c0;
+      --mint: #87e4c5;
+      --rose: #ee8f7f;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", "Trebuchet MS", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(231, 180, 90, 0.18), transparent 28%),
+        radial-gradient(circle at 88% 18%, rgba(74, 193, 192, 0.2), transparent 24%),
+        radial-gradient(circle at 20% 82%, rgba(238, 143, 127, 0.13), transparent 25%),
+        linear-gradient(155deg, #08111a 0%, #0a1623 48%, #071019 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 90%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .shell {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(18px);
+      background: rgba(4, 12, 20, 0.64);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .topbar-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 16px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: #08111c;
+      background: linear-gradient(135deg, var(--gold), #ffd887);
+      box-shadow: 0 12px 28px rgba(231, 180, 90, 0.25);
+    }
+
+    .brand-copy strong,
+    .hero-copy h1,
+    .section-heading h2,
+    .stack-panel h3,
+    .timeline-item h4,
+    .big-card h3,
+    .cta-card h2 {
+      font-family: "Fraunces", Georgia, serif;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+
+    .brand-copy span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .nav a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+    }
+
+    .nav a:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .panel {
+      position: relative;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      pointer-events: none;
+    }
+
+    .hero-copy {
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      min-height: 100%;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(231, 180, 90, 0.12);
+      border: 1px solid rgba(231, 180, 90, 0.22);
+      color: #ffe7b1;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--gold);
+      box-shadow: 0 0 18px rgba(231, 180, 90, 0.9);
+    }
+
+    .hero-copy h1 {
+      margin: 0;
+      font-size: clamp(2.7rem, 4vw, 5rem);
+      line-height: 0.98;
+    }
+
+    .hero-copy .accent {
+      color: #ffd98a;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.75;
+      max-width: 62ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .button.primary {
+      color: #071019;
+      background: linear-gradient(135deg, var(--gold), #ffd58f);
+      box-shadow: 0 14px 30px rgba(231, 180, 90, 0.25);
+    }
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .metric {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+      color: #fff2cf;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .hero-visual {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: space-between;
+      background:
+        radial-gradient(circle at top right, rgba(74, 193, 192, 0.2), transparent 26%),
+        linear-gradient(180deg, rgba(9, 22, 37, 0.96), rgba(8, 18, 31, 0.96));
+    }
+
+    .glass-block {
+      border-radius: 22px;
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .live-board {
+      display: grid;
+      gap: 14px;
+    }
+
+    .workflow {
+      display: grid;
+      gap: 12px;
+    }
+
+    .workflow-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.93rem;
+      color: var(--muted);
+    }
+
+    .workflow-chip,
+    .mini-tag {
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .workflow-arrow {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #09111c;
+      background: linear-gradient(135deg, var(--mint), var(--teal));
+      font-weight: 800;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .mini-card {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .mini-card p,
+    .stack-panel p,
+    .timeline-item p,
+    .big-card p,
+    .bullet-list li,
+    .cta-copy p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 22px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .section-heading span {
+      color: var(--gold);
+      font-size: 0.92rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      margin: 10px 0 0;
+      font-size: clamp(2rem, 3vw, 3.4rem);
+      line-height: 1.02;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1.03rem;
+      max-width: 64ch;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .big-card,
+    .stack-panel,
+    .timeline-item,
+    .cta-card {
+      padding: 26px;
+      border-radius: var(--radius-lg);
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .big-card::before,
+    .stack-panel::before,
+    .timeline-item::before,
+    .cta-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 110px;
+      height: 110px;
+      border-radius: 0 0 110px 0;
+      background: linear-gradient(135deg, rgba(231, 180, 90, 0.16), transparent);
+      pointer-events: none;
+    }
+
+    .card-index {
+      display: inline-flex;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      color: #071019;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gold), #ffd58f);
+      margin-bottom: 18px;
+    }
+
+    .big-card h3,
+    .stack-panel h3,
+    .timeline-item h4,
+    .cta-card h2 {
+      margin: 0 0 12px;
+      font-size: 1.45rem;
+    }
+
+    .bullet-list {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .bullet-list li {
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .bullet-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--mint), var(--teal));
+      box-shadow: 0 0 12px rgba(135, 228, 197, 0.55);
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+    }
+
+    .stack-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .stack-item {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .stack-item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #fef3d6;
+    }
+
+    .stack-item span {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .architecture-flow {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .flow-box {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .flow-box strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #fef3d6;
+    }
+
+    .flow-arrow {
+      width: 2px;
+      height: 28px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, rgba(135, 228, 197, 0.1), rgba(135, 228, 197, 0.9));
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .timeline-item strong {
+      display: inline-flex;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #ffe7b1;
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .cta-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+      background:
+        radial-gradient(circle at top right, rgba(74, 193, 192, 0.24), transparent 26%),
+        linear-gradient(135deg, rgba(13, 28, 41, 0.98), rgba(8, 19, 31, 0.98));
+    }
+
+    .cta-copy {
+      max-width: 64ch;
+    }
+
+    .signature {
+      padding: 24px 0 54px;
+      color: rgba(237, 243, 247, 0.68);
+      font-size: 0.94rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .section-heading,
+      .stack-grid,
+      .cta-card {
+        grid-template-columns: 1fr;
+      }
+
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .timeline {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding-top: 34px;
+      }
+
+      .hero-copy,
+      .hero-visual,
+      .big-card,
+      .stack-panel,
+      .timeline-item,
+      .cta-card {
+        padding: 22px;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.2rem, 11vw, 3.6rem);
+      }
+
+      .metrics,
+      .mini-grid,
+      .card-grid,
+      .timeline,
+      .stack-list {
+        grid-template-columns: 1fr;
+      }
+
+      .workflow-row {
+        grid-template-columns: 1fr;
+      }
+
+      .workflow-arrow {
+        justify-self: start;
+        transform: rotate(90deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">SP</div>
+        <div class="brand-copy">
+          <strong>SIRH Intelligence Pro</strong>
+          <span>SIRH &amp; Juridique augment&eacute;s par IA</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#vision">Vision</a>
+        <a href="#modules">Modules</a>
+        <a href="#ia">IA &amp; Automatisation</a>
+        <a href="#stack">Architecture</a>
+        <a href="#roadmap">Roadmap</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <article class="panel hero-copy reveal">
+          <span class="eyebrow">Projet Digital RH + Juridique</span>
+          <h1>
+            Un <span class="accent">SIRH intelligent</span> capable de piloter les RH,
+            les obligations juridiques et les workflows m&eacute;tiers de bout en bout.
+          </h1>
+          <p>
+            Cette solution centralise les processus RH, les dossiers salari&eacute;s, les contrats,
+            les validations, la conformit&eacute; sociale et les actes juridiques dans une plateforme
+            moderne, assist&eacute;e par intelligence artificielle et automatisation compl&egrave;te.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button primary" href="#stack">Laravel 12 + PostgreSQL</a>
+            <a class="button secondary" href="#modules">Voir les modules cl&eacute;s</a>
+          </div>
+
+          <div class="metrics">
+            <div class="metric">
+              <strong>360&deg;</strong>
+              <span>Vue unifi&eacute;e RH, juridique, conformit&eacute; et reporting d&eacute;cisionnel</span>
+            </div>
+            <div class="metric">
+              <strong>24/7</strong>
+              <span>Automatisation continue des alertes, validations, relances et g&eacute;n&eacute;rations</span>
+            </div>
+            <div class="metric">
+              <strong>IA</strong>
+              <span>Assistant documentaire, analyse, synth&egrave;se, contr&ocirc;le et support op&eacute;rationnel</span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="panel hero-visual reveal">
+          <div class="glass-block">
+            <strong style="display:block;margin-bottom:10px;font-size:1.1rem;">Cha&icirc;ne de valeur automatis&eacute;e</strong>
+            <div class="workflow">
+              <div class="workflow-row">
+                <div class="workflow-chip">Demande RH / dossier / contrat</div>
+                <div class="workflow-arrow">&gt;</div>
+                <div class="workflow-chip">Analyse IA + contr&ocirc;les r&egrave;gles</div>
+                <div class="workflow-arrow">&gt;</div>
+                <div class="workflow-chip">Validation, notification, archivage</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="live-board">
+            <div class="mini-grid">
+              <div class="mini-card">
+                <strong>Gestion RH</strong>
+                <p>Dossiers salari&eacute;s, cong&eacute;s, carri&egrave;res, contrats, organigrammes et suivis.</p>
+              </div>
+              <div class="mini-card">
+                <strong>Juridique augment&eacute;</strong>
+                <p>Biblioth&egrave;que d&apos;actes, suivi des obligations, rappels et contr&ocirc;le documentaire.</p>
+              </div>
+              <div class="mini-card">
+                <strong>Automatisation</strong>
+                <p>Workflows conditionnels, relances intelligentes, signatures, exports et tableaux de bord.</p>
+              </div>
+              <div class="mini-card">
+                <strong>Copilote IA</strong>
+                <p>R&eacute;sum&eacute;s, aide &agrave; la d&eacute;cision, d&eacute;tection d&apos;&eacute;carts et r&eacute;ponses guid&eacute;es.</p>
+              </div>
+            </div>
+
+            <div class="glass-block">
+              <div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;">
+                <div>
+                  <strong style="display:block;margin-bottom:8px;">Objectif m&eacute;tier</strong>
+                  <p style="margin:0;color:var(--muted);line-height:1.7;">
+                    Remplacer les traitements dispers&eacute;s par une plateforme structur&eacute;e,
+                    s&eacute;curis&eacute;e et tra&ccedil;able, capable d&apos;acc&eacute;l&eacute;rer les op&eacute;rations RH et les d&eacute;cisions.
+                  </p>
+                </div>
+                <span class="mini-tag">Tra&ccedil;abilit&eacute; + Conformit&eacute; + Productivit&eacute;</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="vision">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <span>Vision</span>
+            <h2>Transformer la fonction RH et juridique en moteur de performance.</h2>
+          </div>
+          <p>
+            Le projet vise &agrave; digitaliser et fiabiliser les processus sensibles: administration RH,
+            gestion documentaire, suivi des contrats, conformit&eacute;, alertes r&eacute;glementaires et
+            exploitation de la donn&eacute;e. L&apos;IA agit comme une couche d&apos;acc&eacute;l&eacute;ration, pas comme un gadget.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="big-card reveal">
+            <div class="card-index">01</div>
+            <h3>Centralisation totale</h3>
+            <p>
+              Une base unique pour les salari&eacute;s, les contrats, les actes, les demandes,
+              les historiques et les pi&egrave;ces justificatives.
+            </p>
+            <ul class="bullet-list">
+              <li>Suppression des doublons et des fichiers isol&eacute;s.</li>
+              <li>Vision compl&egrave;te de chaque collaborateur et de chaque dossier.</li>
+              <li>Recherche instantan&eacute;e et acc&egrave;s par profil utilisateur.</li>
+            </ul>
+          </article>
+
+          <article class="big-card reveal">
+            <div class="card-index">02</div>
+            <h3>Conformit&eacute; et ma&icirc;trise du risque</h3>
+            <p>
+              Le syst&egrave;me structure les validations, journalise les actions et anticipe les oublis
+              sur les &eacute;ch&eacute;ances RH et juridiques.
+            </p>
+            <ul class="bullet-list">
+              <li>Historique d&apos;actions et piste d&apos;audit.</li>
+              <li>Alertes sur obligations, dates limites et renouvellements.</li>
+              <li>Standardisation des actes et des proc&eacute;dures.</li>
+            </ul>
+          </article>
+
+          <article class="big-card reveal">
+            <div class="card-index">03</div>
+            <h3>Ex&eacute;cution rapide et intelligente</h3>
+            <p>
+              L&apos;automatisation et l&apos;IA r&eacute;duisent les t&acirc;ches manuelles, fluidifient les circuits
+              de d&eacute;cision et am&eacute;liorent la qualit&eacute; de service.
+            </p>
+            <ul class="bullet-list">
+              <li>G&eacute;n&eacute;ration de documents et synth&egrave;ses assist&eacute;es.</li>
+              <li>Routage automatique selon type de dossier ou niveau d&apos;urgence.</li>
+              <li>Reporting pilot&eacute; par donn&eacute;es en temps r&eacute;el.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="modules">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <span>Modules Cl&eacute;s</span>
+            <h2>Une plateforme unifi&eacute;e pour les op&eacute;rations RH et juridiques.</h2>
+          </div>
+          <p>
+            Le coeur fonctionnel s&apos;articule autour de modules interconnect&eacute;s afin d&apos;&eacute;viter les ruptures
+            de flux et d&apos;offrir un parcours homog&egrave;ne, du besoin initial jusqu&apos;&agrave; l&apos;archivage.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="big-card reveal">
+            <div class="card-index">A</div>
+            <h3>Administration du personnel</h3>
+            <ul class="bullet-list">
+              <li>Fiches salari&eacute;s, organigrammes, affectations et carri&egrave;res.</li>
+              <li>Contrats, avenants, historique et documents de r&eacute;f&eacute;rence.</li>
+              <li>Suivi des absences, cong&eacute;s, justificatifs et validations.</li>
+            </ul>
+          </article>
+
+          <article class="big-card reveal">
+            <div class="card-index">B</div>
+            <h3>Juridique et conformit&eacute;</h3>
+            <ul class="bullet-list">
+              <li>Mod&egrave;les d&apos;actes, d&eacute;cisions, lettres et proc&eacute;dures.</li>
+              <li>Calendrier d&apos;&eacute;ch&eacute;ances et obligations r&eacute;glementaires.</li>
+              <li>Archivage probant et tra&ccedil;abilit&eacute; des validations.</li>
+            </ul>
+          </article>
+
+          <article class="big-card reveal">
+            <div class="card-index">C</div>
+            <h3>Demandes et workflows</h3>
+            <ul class="bullet-list">
+              <li>Circuits de validation param&eacute;trables par r&ocirc;le ou service.</li>
+              <li>Notifications, relances et escalades automatiques.</li>
+              <li>Suivi de statut en temps r&eacute;el pour chaque dossier.</li>
+            </ul>
+          </article>
+
+          <article class="big-card reveal">
+            <div class="card-index">D</div>
+            <h3>Tableaux de bord</h3>
+            <ul class="bullet-list">
+              <li>KPIs RH: effectifs, absences, rotation, d&eacute;lais et charges.</li>
+              <li>KPIs juridiques: risques, &eacute;ch&eacute;ances et volum&eacute;trie documentaire.</li>
+              <li>Exports PDF, Excel et rapports de direction.</li>
+            </ul>
+          </article>
+
+          <article class="big-card reveal">
+            <div class="card-index">E</div>
+            <h3>Gestion documentaire</h3>
+            <ul class="bullet-list">
+              <li>Classement intelligent des pi&egrave;ces par type et contexte.</li>
+              <li>Versioning, indexation et moteur de recherche avanc&eacute;.</li>
+              <li>Pr&eacute;visualisation et r&eacute;f&eacute;rencement crois&eacute; des dossiers.</li>
+            </ul>
+          </article>
+
+          <article class="big-card reveal">
+            <div class="card-index">F</div>
+            <h3>Espace self-service</h3>
+            <ul class="bullet-list">
+              <li>Demandes salari&eacute;s, consultation de documents et suivi des tickets.</li>
+              <li>Acc&egrave;s manager aux validations et aux indicateurs d&apos;&eacute;quipe.</li>
+              <li>Exp&eacute;rience fluide sur desktop et mobile.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="ia">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <span>IA &amp; Automatisation</span>
+            <h2>Une intelligence utile, reli&eacute;e aux processus et aux donn&eacute;es.</h2>
+          </div>
+          <p>
+            L&apos;IA intervient pour acc&eacute;l&eacute;rer les traitements, s&eacute;curiser les d&eacute;cisions et assister les &eacute;quipes.
+            L&apos;automatisation orchestre les t&acirc;ches r&eacute;p&eacute;titives, les notifications et la circulation des dossiers.
+          </p>
+        </div>
+
+        <div class="stack-grid">
+          <article class="stack-panel reveal">
+            <h3>Cas d&apos;usage IA &agrave; forte valeur</h3>
+            <div class="stack-list">
+              <div class="stack-item">
+                <strong>Assistant RH/Juridique</strong>
+                <span>R&eacute;ponses guid&eacute;es sur les dossiers, politiques, obligations et proc&eacute;dures internes.</span>
+              </div>
+              <div class="stack-item">
+                <strong>Lecture documentaire</strong>
+                <span>R&eacute;sum&eacute;s, extraction d&apos;informations cl&eacute;s et qualification de documents.</span>
+              </div>
+              <div class="stack-item">
+                <strong>Contr&ocirc;les intelligents</strong>
+                <span>D&eacute;tection d&apos;&eacute;carts, champs manquants, incoh&eacute;rences et points de vigilance.</span>
+              </div>
+              <div class="stack-item">
+                <strong>R&eacute;daction assist&eacute;e</strong>
+                <span>Pr&eacute;paration de courriers, synth&egrave;ses, comptes rendus et brouillons d&apos;actes.</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="stack-panel reveal">
+            <h3>Automatisation compl&egrave;te</h3>
+            <div class="architecture-flow">
+              <div class="flow-box">
+                <strong>1. D&eacute;clenchement</strong>
+                <span>Cr&eacute;ation d&apos;une demande, import d&apos;une pi&egrave;ce, &eacute;ch&eacute;ance proche ou &eacute;v&eacute;nement RH.</span>
+              </div>
+              <div class="flow-arrow"></div>
+              <div class="flow-box">
+                <strong>2. R&egrave;gles m&eacute;tier</strong>
+                <span>Qualification, priorit&eacute;, affectation et contr&ocirc;le selon les param&egrave;tres internes.</span>
+              </div>
+              <div class="flow-arrow"></div>
+              <div class="flow-box">
+                <strong>3. Action automatique</strong>
+                <span>Notification, validation, g&eacute;n&eacute;ration de document, relance ou escalade.</span>
+              </div>
+              <div class="flow-arrow"></div>
+              <div class="flow-box">
+                <strong>4. Tra&ccedil;abilit&eacute;</strong>
+                <span>Journal des actions, statut du dossier et tableau de bord mis &agrave; jour en continu.</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <span>Architecture Technique</span>
+            <h2>Laravel 12 + PostgreSQL pour un socle robuste, moderne et &eacute;volutif.</h2>
+          </div>
+          <p>
+            La r&eacute;alisation technique repose sur une architecture web s&eacute;curis&eacute;e et maintenable. Laravel 12
+            apporte la rapidit&eacute; de d&eacute;veloppement, la structuration des workflows et la qualit&eacute; de code,
+            tandis que PostgreSQL garantit la fiabilit&eacute; transactionnelle et l&apos;int&eacute;grit&eacute; des donn&eacute;es.
+          </p>
+        </div>
+
+        <div class="stack-grid">
+          <article class="stack-panel reveal">
+            <h3>Socle applicatif</h3>
+            <div class="stack-list">
+              <div class="stack-item">
+                <strong>Laravel 12</strong>
+                <span>Architecture claire, authentification, jobs, events, notifications et API modernes.</span>
+              </div>
+              <div class="stack-item">
+                <strong>PostgreSQL</strong>
+                <span>Base relationnelle fiable, requ&ecirc;tes avanc&eacute;es, contraintes fortes et tra&ccedil;abilit&eacute; native.</span>
+              </div>
+              <div class="stack-item">
+                <strong>Files &amp; Documents</strong>
+                <span>Stockage s&eacute;curis&eacute; des pi&egrave;ces, indexation et versioning documentaire.</span>
+              </div>
+              <div class="stack-item">
+                <strong>API &amp; Int&eacute;grations</strong>
+                <span>Connexion possible &agrave; paie, messagerie, signature, ERP ou outils tiers.</span>
+              </div>
+              <div class="stack-item">
+                <strong>Queues &amp; Automations</strong>
+                <span>Traitements diff&eacute;r&eacute;s, workflows lourds et notifications sans bloquer l&apos;exp&eacute;rience utilisateur.</span>
+              </div>
+              <div class="stack-item">
+                <strong>S&eacute;curit&eacute;</strong>
+                <span>Gestion fine des droits, journalisation, audit et protection des donn&eacute;es sensibles.</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="stack-panel reveal">
+            <h3>Logique de plateforme</h3>
+            <div class="architecture-flow">
+              <div class="flow-box">
+                <strong>Interface utilisateur</strong>
+                <span>Portail RH, espace manager, espace salari&eacute; et back-office juridique.</span>
+              </div>
+              <div class="flow-arrow"></div>
+              <div class="flow-box">
+                <strong>Services Laravel</strong>
+                <span>Moteur m&eacute;tier, validations, orchestrations, notifications et services IA.</span>
+              </div>
+              <div class="flow-arrow"></div>
+              <div class="flow-box">
+                <strong>PostgreSQL + stockage</strong>
+                <span>Donn&eacute;es structur&eacute;es, audit, documents, historiques et configurations.</span>
+              </div>
+              <div class="flow-arrow"></div>
+              <div class="flow-box">
+                <strong>Pilotage d&eacute;cisionnel</strong>
+                <span>Rapports, tableaux de bord, alertes et indicateurs consolid&eacute;s pour la direction.</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <span>Roadmap</span>
+            <h2>Une mise en oeuvre progressive pour livrer vite et monter en puissance.</h2>
+          </div>
+          <p>
+            La feuille de route peut &ecirc;tre organis&eacute;e en vagues courtes afin de s&eacute;curiser l&apos;adoption,
+            ma&icirc;triser les risques et produire de la valeur d&egrave;s les premiers d&eacute;ploiements.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <strong>Phase 1</strong>
+            <h4>Cadrage et mod&eacute;lisation</h4>
+            <p>
+              Recueil des besoins, cartographie des processus, mod&egrave;le de donn&eacute;es,
+              r&ocirc;les utilisateurs et architecture fonctionnelle.
+            </p>
+          </article>
+
+          <article class="timeline-item reveal">
+            <strong>Phase 2</strong>
+            <h4>Noyau RH et documentaire</h4>
+            <p>
+              Mise en place des dossiers salari&eacute;s, demandes RH, gestion documentaire,
+              authentification et premi&egrave;res validations.
+            </p>
+          </article>
+
+          <article class="timeline-item reveal">
+            <strong>Phase 3</strong>
+            <h4>Juridique et automatisation</h4>
+            <p>
+              Ajout des actes, &eacute;ch&eacute;ances, workflows avanc&eacute;s, notifications,
+              relances, audit et tableaux de bord op&eacute;rationnels.
+            </p>
+          </article>
+
+          <article class="timeline-item reveal">
+            <strong>Phase 4</strong>
+            <h4>IA et pilotage avanc&eacute;</h4>
+            <p>
+              Assistant intelligent, recherche augment&eacute;e, synth&egrave;ses, contr&ocirc;les
+              contextuels et reporting d&apos;aide &agrave; la d&eacute;cision.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <article class="cta-card reveal">
+          <div class="cta-copy">
+            <h2>R&eacute;sultat attendu: une plateforme strat&eacute;gique, pas un simple outil de gestion.</h2>
+            <p>
+              SIRH Intelligence Pro positionne la fonction RH et juridique comme un centre de pilotage,
+              de conformit&eacute; et de performance. La combinaison Laravel 12, PostgreSQL, IA et automatisation
+              permet de construire une solution fiable, rapide &agrave; faire &eacute;voluer et pr&ecirc;te pour la croissance.
+            </p>
+          </div>
+          <a class="button primary" href="#vision">Pr&eacute;senter la vision</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell signature">
+    Presentation HTML du projet SIRH &amp; Juridique augmente par IA | Stack cible: Laravel 12, PostgreSQL, automatisation complete.
+  </footer>
+
+  <script>
+    const items = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+
+    items.forEach((item) => observer.observe(item));
+  </script>
+</body>
+</html>
